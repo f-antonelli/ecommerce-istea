@@ -1,7 +1,6 @@
+import { cardList } from "./components/card-list.js";
 import { getProducts } from "./services/get-products.js";
 
 const main = document.querySelector("main");
 
-main.innerHTML = `<span>${await getProducts().then((products) =>
-  JSON.stringify(products)
-)}</span>`;
+main.innerHTML = await getProducts().then((products) => cardList(products));
