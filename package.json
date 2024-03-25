@@ -5,7 +5,6 @@
   "type": "module",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "tailwind build -i setup.css -o src/styles/styles.css --watch"
   },
   "keywords": [],
