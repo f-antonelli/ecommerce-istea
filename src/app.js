@@ -1,15 +1,17 @@
-import { card } from "./components/card.js";
+import { createLoadMoreButton } from "./components/load-more-button.js";
 import { nav } from "./components/navbar/navbar.js";
-import { getProducts } from "./services/get-products.js";
+import { loadProducts } from "./hooks/loadMore.js";
 
 nav();
 
 const productsSection = document.getElementById("products");
 
-await getProducts().then((products) => {
-  const cards = products.products.map((product) => card(product));
+(async function loadInitialProducts() {
+  const productsCards = await loadProducts();
+  productsCards.forEach((cardElement) =>
+    productsSection.appendChild(cardElement)
+  );
+})();
 
-  cards.forEach((cardElement) => {
-    productsSection.appendChild(cardElement);
-  });
-});
+const loadMoreButton = createLoadMoreButton();
+productsSection.parentNode.appendChild(loadMoreButton);
