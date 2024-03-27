@@ -21,7 +21,8 @@ export function card(item) {
   `;
 
   cardElement.querySelector("button").addEventListener("click", () => {
-    singleProduct(item.id);
+    const modal = singleProduct(item);
+    document.body.appendChild(modal);
   });
 
   return cardElement;
