@@ -1,4 +1,5 @@
 import { cartProductItem } from "./cartProductItem.js";
+import { cartFooter } from "./cartFooter.js";
 
 export function cart() {
   const cartElement = document.createElement("div");
@@ -18,7 +19,7 @@ export function cart() {
             class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
           >
             <div class="pointer-events-auto w-screen max-w-md">
-              <div
+              <div id="cartBody"
                 class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl animate-slide-right"
               >
                 <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
@@ -57,43 +58,10 @@ export function cart() {
                   <div class="mt-8">
                     <div class="flow-root">
                       <ul role="list" class="-my-6 divide-y divide-gray-200" id="cartItemList">
-                        <!-- Cart items will be dynamically inserted here -->
                       </ul>
                     </div>
                   </div>
-                </div>
 
-                <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-                  <div
-                    class="flex justify-between text-base font-medium text-gray-900"
-                  >
-                    <p>Subtotal</p>
-                    <p>$262.00</p>
-                  </div>
-                  <p class="mt-0.5 text-sm text-gray-500">
-                    Shipping and taxes calculated at checkout.
-                  </p>
-                  <div class="mt-6">
-                    <a
-                      href="#"
-                      class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                      >Checkout</a
-                    >
-                  </div>
-                  <div
-                    class="mt-6 flex justify-center text-center text-sm text-gray-500"
-                  >
-                    <p>
-                      or
-                      <button
-                        type="button"
-                        class="font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        Continue Shopping
-                        <span aria-hidden="true"> &rarr;</span>
-                      </button>
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -103,13 +71,13 @@ export function cart() {
     </div>
   `;
 
-  // Obtener el array de productos del localStorage
+  // Adjuntar el footer al elemento del carrito
+  cartElement.querySelector("#cartBody").appendChild(cartFooter());
+
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Seleccionar el ul donde se insertarán los elementos de la lista
   const cartItemList = cartElement.querySelector("#cartItemList");
 
-  // Crear elementos li para cada producto en el carrito
   cartItems.forEach((item) => {
     const li = cartProductItem(item);
     cartItemList.appendChild(li);

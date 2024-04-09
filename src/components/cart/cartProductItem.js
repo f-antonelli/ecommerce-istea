@@ -1,3 +1,5 @@
+import { renderCartFooter } from "../../hooks/renderCartFooter.js";
+
 export function cartProductItem(item) {
   const itemList = document.createElement("li");
   itemList.className = "flex py-6";
@@ -46,6 +48,8 @@ export function cartProductItem(item) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     itemList.remove();
+
+    renderCartFooter();
   });
 
   return itemList;
