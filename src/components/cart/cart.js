@@ -30,7 +30,7 @@ export function cart() {
                     >
                       Shopping cart
                     </h2>
-                    <div class="ml-3 flex h-7 items-center">
+                    <div id="closeModal" class="ml-3 flex h-7 items-center">
                       <button
                         type="button"
                         class="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
@@ -70,6 +70,10 @@ export function cart() {
       </div>
     </div>
   `;
+
+  cartElement.querySelector("#closeModal").addEventListener("click", () => {
+    cartElement.remove();
+  });
 
   // Adjuntar el footer al elemento del carrito
   cartElement.querySelector("#cartBody").appendChild(cartFooter());
