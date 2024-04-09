@@ -1,3 +1,4 @@
+import { cart } from "../cart/cart.js";
 import { navItems } from "./nav-items.js";
 
 export function nav() {
@@ -19,11 +20,14 @@ export function nav() {
       `
         )
         .join("")}
-      <img src="./src/assets/icons/cart.svg" alt="cart" class="h-6 w-6 " />
+      <img id="cart" src="./src/assets/icons/cart.svg" alt="cart" class="h-6 w-6" />
     </div>
-
-
   `;
+
+  nav.querySelector("#cart").addEventListener("click", () => {
+    const cartModal = cart();
+    document.body.appendChild(cartModal);
+  });
 
   return nav;
 }

@@ -1,3 +1,5 @@
+import { addToCart } from "./cart/addToCart.js";
+
 export function singleProduct(item) {
   const modal = document.createElement("div");
 
@@ -61,8 +63,12 @@ export function singleProduct(item) {
 
   //  add to cart
   modalContent.querySelector("#addToCartBtn").addEventListener("click", () => {
-    const quantity = parseInt(quantitySpan.textContent);
-    console.log(item);
+    let itemQuantity = parseInt(quantitySpan.textContent);
+
+    item.quantity = itemQuantity;
+    item.price = item.price * itemQuantity;
+
+    addToCart(item);
   });
 
   modal.appendChild(modalContent);
