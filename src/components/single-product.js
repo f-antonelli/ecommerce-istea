@@ -67,7 +67,7 @@ export function singleProduct(item) {
 
     item.quantity = itemQuantity;
     item.price = item.price * itemQuantity;
-
+    console.log(item); // borrar
     addToCart(item);
   });
 
