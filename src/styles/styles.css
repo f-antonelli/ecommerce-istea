@@ -857,14 +857,6 @@ video {
   overflow-y: auto;
 }
 
-.overflow-y-hidden {
-  overflow-y: hidden;
-}
-
-.overflow-y-scroll {
-  overflow-y: scroll;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
